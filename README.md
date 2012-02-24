@@ -16,8 +16,8 @@ of repositories, or by pulling in the changes when the repository is already clo
 ### Usage  
 * Now you can update by doing
 
-    cake update
+		cake update
 
 * Alternatively you can only update a single plugin by providing its name
 
-    cake -n vim-fugitive update
+		cake -n vim-fugitive update
