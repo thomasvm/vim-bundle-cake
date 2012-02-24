@@ -16,20 +16,29 @@ bundles = [
 option "-n", "--name [NAME]", "Foldername of the bundle to update"
 
 task 'update', 'Updates vim bundles', (options) ->
-  for url in bundles
+  todo = bundles.concat()
+
+  next = ->
+    return unless todo.length
+
+    url = todo.shift()
     name = getFoldername url
     if options.name isnt undefined and options.name isnt name
       console.log "Skipping #{name}"
-      continue
+      return next()
 
-    # Wrap in closure
     clone = (name, url) ->
       path.exists name, (exists) ->
         if exists
-          spawn 'git', [ 'pull', 'origin', 'master' ], { cwd: name }
+          git = spawn 'git', [ 'pull', 'origin', 'master' ], { cwd: name }
+          git.on 'exit', ->
+            next()
         else
-          spawn 'git', [ 'clone', url ]
+          git = pawn 'git', [ 'clone', url ]
+          git.on 'exit', ->
+            next()
     clone name, url
+  next()
 
 # Curry the system spawn
 spawn = (cmd, args, options) ->
