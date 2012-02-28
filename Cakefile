@@ -34,7 +34,7 @@ task 'update', 'Updates vim bundles', (options) ->
           git.on 'exit', ->
             next()
         else
-          git = pawn 'git', [ 'clone', url ]
+          git = spawn 'git', [ 'clone', url ]
           git.on 'exit', ->
             next()
     clone name, url
