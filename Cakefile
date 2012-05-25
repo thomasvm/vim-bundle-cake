@@ -10,7 +10,11 @@ bundles = [
   "https://github.com/Lokaltog/vim-powerline.git",
   "https://github.com/tpope/vim-fugitive.git",
   "https://github.com/scrooloose/nerdtree.git",
-  "https://github.com/ervandew/supertab.git"
+  "https://github.com/ervandew/supertab.git",
+  "https://github.com/vim-scripts/mediawiki.vim.git",
+  # Color schemes
+  "https://github.com/vim-scripts/darkspectrum.git",
+  "https://github.com/nanotech/jellybeans.vim"
 ]
 
 option "-n", "--name [NAME]", "Foldername of the bundle to update"
