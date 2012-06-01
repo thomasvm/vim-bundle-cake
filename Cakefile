@@ -2,18 +2,24 @@ path = require "path"
 sytemSpawn = require('child_process').spawn
 
 bundles = [
-  "https://github.com/msanders/snipmate.vim.git",
   "https://github.com/kchmck/vim-coffee-script.git",
-  "https://github.com/digitaltoad/vim-jade",
-  "https://github.com/groenewege/vim-less",
   "https://github.com/tpope/vim-markdown.git",
   "https://github.com/Lokaltog/vim-powerline.git",
   "https://github.com/tpope/vim-fugitive.git",
   "https://github.com/scrooloose/nerdtree.git",
   "https://github.com/ervandew/supertab.git",
   "https://github.com/vim-scripts/mediawiki.vim.git",
+  # "https://github.com/digitaltoad/vim-jade",
+  # "https://github.com/groenewege/vim-less",
+  # "https://github.com/walm/jshint.vim",
+  # For snipmate
+  "https://github.com/garbas/vim-snipmate.git",
+  "https://github.com/tomtom/tlib_vim.git",
+  "https://github.com/MarcWeber/vim-addon-mw-utils.git",
+  "https://github.com/honza/snipmate-snippets.git",
   # Color schemes
   "https://github.com/vim-scripts/darkspectrum.git",
+  "https://github.com/vim-scripts/fnaqevan",
   "https://github.com/nanotech/jellybeans.vim"
 ]
 
