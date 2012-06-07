@@ -20,7 +20,9 @@ bundles = [
   # Color schemes
   "https://github.com/vim-scripts/darkspectrum.git",
   "https://github.com/vim-scripts/fnaqevan",
-  "https://github.com/nanotech/jellybeans.vim"
+  "https://github.com/nanotech/jellybeans.vim",
+  "https://github.com/tomasr/molokai.git",
+  "https://github.com/noahfrederick/Hemisu.git"
 ]
 
 option "-n", "--name [NAME]", "Foldername of the bundle to update"
