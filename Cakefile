@@ -1,4 +1,4 @@
-path = require "path"
+fs = require "fs"
 sytemSpawn = require('child_process').spawn
 
 bundles = [
@@ -8,7 +8,9 @@ bundles = [
   "https://github.com/tpope/vim-fugitive.git",
   "https://github.com/scrooloose/nerdtree.git",
   "https://github.com/ervandew/supertab.git",
+  "https://github.com/kien/ctrlp.vim.git",
   "https://github.com/vim-scripts/mediawiki.vim.git",
+  "https://github.com/gabemc/powershell-vim.git",
   # "https://github.com/digitaltoad/vim-jade",
   # "https://github.com/groenewege/vim-less",
   # "https://github.com/walm/jshint.vim",
@@ -22,7 +24,8 @@ bundles = [
   "https://github.com/vim-scripts/fnaqevan",
   "https://github.com/nanotech/jellybeans.vim",
   "https://github.com/tomasr/molokai.git",
-  "https://github.com/noahfrederick/Hemisu.git"
+  "https://github.com/noahfrederick/Hemisu.git",
+  "https://github.com/sjl/badwolf.git"
 ]
 
 option "-n", "--name [NAME]", "Foldername of the bundle to update"
@@ -40,11 +43,13 @@ task 'update', 'Updates vim bundles', (options) ->
       return next()
 
     clone = (name, url) ->
-      path.exists name, (exists) ->
+      fs.exists name, (exists) ->
         if exists
-          git = spawn 'git', [ 'pull', 'origin', 'master' ], { cwd: name }
+          git = spawn 'git', [ 'fetch', 'origin' ], { cwd: name }
           git.on 'exit', ->
-            next()
+            git = spawn 'git', [ 'merge', 'origin/master' ], { cwd: name }
+            git.on 'exit', ->
+              next()
         else
           git = spawn 'git', [ 'clone', url ]
           git.on 'exit', ->
